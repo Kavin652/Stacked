@@ -1,0 +1,174 @@
+{
+  "app_name": "Corn Club",
+  "personality": "7 Dark-First Utility DARK",
+  "personality_one_liner": "A command-center for Gen Z finances—sharp, high-contrast, neon-powered, yet visually spacious and totally approachable.",
+  "color": {
+    "surface": "#121214",
+    "onSurface": "#FFFFFF",
+    "surfaceSecondary": "#1C1C1F",
+    "onSurfaceSecondary": "#E4E4E7",
+    "surfaceTertiary": "#27272A",
+    "onSurfaceTertiary": "#A1A1AA",
+    "surfaceInverse": "#FFFFFF",
+    "onSurfaceInverse": "#121214",
+    "brand": "#00E5A0",
+    "brandPrimary": "#00E5A0",
+    "onBrandPrimary": "#093021",
+    "brandSecondary": "#00B37E",
+    "onBrandSecondary": "#FFFFFF",
+    "brandTertiary": "#004D36",
+    "onBrandTertiary": "#00E5A0",
+    "success": "#00E5A0",
+    "onSuccess": "#093021",
+    "warning": "#FFB020",
+    "onWarning": "#332100",
+    "error": "#FF4D4D",
+    "onError": "#4D0000",
+    "info": "#004D36",
+    "onInfo": "#00E5A0",
+    "border": "#27272A",
+    "borderStrong": "#3F3F46",
+    "divider": "#27272A"
+  },
+  "typography": {
+    "displayFontFamily": "Bebas Neue",
+    "textFontFamily": "DM Sans",
+    "scale": {
+      "sm": 12,
+      "base": 14,
+      "lg": 16,
+      "xl": 20,
+      "2xl": 24,
+      "3xl": 32,
+      "4xl": 48
+    }
+  },
+  "spacing": {
+    "rule": "Avoid unnecessary spacing; rely on exact scale tokens. Use generous padding inside cards but tight groupings for related data.",
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "radius_tokens": {
+    "sm": 6,
+    "md": 12,
+    "lg": 20,
+    "pill": 999
+  },
+  "shadow_tier": 0,
+  "navigation": "bottom_tabs",
+  "icon_set": "Phosphor",
+  "glassmorphism": {
+    "enabled": true,
+    "do's": [
+      "Use on the bottom tab bar and sticky headers to maintain context while scrolling.",
+      "Pair with a ≥75% surface-tinted base to guarantee text readability in dark mode."
+    ],
+    "dont's": [
+      "Never use on form fields or list rows.",
+      "Do not rely purely on blur for contrast—always include the dark tint base."
+    ]
+  },
+  "platform_libraries": {
+    "glass": {
+      "ios": "expo-glass-effect",
+      "android": "expo-blur",
+      "low_end_android_fallback": "solid surfaceSecondary"
+    },
+    "image": "expo-image",
+    "blur": "expo-blur",
+    "bottom_sheet": "@gorhom/bottom-sheet",
+    "animation": "react-native-reanimated",
+    "gesture": "react-native-gesture-handler"
+  },
+  "screens": [
+    {
+      "name": "Dashboard",
+      "purpose": "A high-level command center showing all balances, greetings, and monthly spending vs last month.",
+      "states": {
+        "loading": "Skeleton UI for balances with subtle pulsing on surfaceSecondary.",
+        "empty": "Onboarding splash suggesting users log their first transaction or link an account.",
+        "error": "Error boundary card showing 'Unable to load balances' with a retry button in brandPrimary."
+      },
+      "layout": "Use a top summary strip featuring the user's name and total balance. Below, a 2-col grid for savings, investing, and cash balance cards. Add a full-width summary card at the bottom comparing this month vs last month. Balances use Bebas Neue in size 4xl to anchor the screen."
+    },
+    {
+      "name": "Transactions",
+      "purpose": "Manual transaction logger and visual breakdown of spending by category.",
+      "states": {
+        "loading": "Spinner centered on the screen.",
+        "empty": "Empty state illustration of neon green savings, prompting user to log their first transaction.",
+        "error": "Standard error prompt with a retry button."
+      },
+      "layout": "Top half contains pie/bar charts summarizing current month spending. Bottom half is a scrollable list of transactions. Use a sticky Floating Action Button (FAB) or fixed bottom CTA container for 'Add Transaction'."
+    },
+    {
+      "name": "AI Advisor",
+      "purpose": "A chat interface powered by Claude API providing personalized financial advice.",
+      "states": {
+        "loading": "Shimmering chat bubbles mimicking typing indicators.",
+        "empty": "Initial greeting from AI (using the generated AI avatar) with 2-3 suggested prompt chips.",
+        "error": "Inline error bubble in red indicating 'Connection lost, please retry'."
+      },
+      "layout": "Chat interface. AI messages use surfaceSecondary background with onSurface text. User messages use surfaceTertiary background. Include a fixed input area at the bottom inside KeyboardAvoidingView."
+    },
+    {
+      "name": "Investment Hub",
+      "purpose": "Tracker for manually logged stock/ETF/401k holdings and AI-suggested beginner stocks.",
+      "states": {
+        "loading": "Spinner in the center.",
+        "empty": "Empty portfolio visual with a prompt to 'Log your first holding'.",
+        "error": "Error card indicating failure to load portfolio data."
+      },
+      "layout": "Top section features a simple portfolio breakdown chart and total holding value. Followed by a vertical list of current holdings. Bottom section includes horizontally scrolling cards for AI-suggested beginner-friendly stocks based on risk tolerance."
+    },
+    {
+      "name": "Goals",
+      "purpose": "Savings goals tracker with progress bars and AI calculated timeline.",
+      "states": {
+        "loading": "Skeleton loader for goal cards.",
+        "empty": "Empty state illustration prompting the user to create their first goal.",
+        "error": "Standard error message with a retry option."
+      },
+      "layout": "A vertical stack of cards. Each card displays the goal name, emoji, target amount, a prominent progress bar in brandPrimary, and a subtext calculating how many weeks/months remaining to reach the goal."
+    }
+  ],
+  "haptics": {
+    "tab_press": "light",
+    "button_press": "medium",
+    "transaction_logged": "success",
+    "goal_created": "success",
+    "error_state": "error"
+  },
+  "images": {
+    "corn_club_logo": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/340da871-6bc1-4873-a505-81f75e310e50/images/d7841404c75f67be89603f727af37202d16c47568537bd939176f44015f156ed.png",
+      "alt": "Corn Club App Logo"
+    },
+    "empty_state_savings": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/340da871-6bc1-4873-a505-81f75e310e50/images/a18faa757f07dcd3ac2e4bdea3c72db21c5e2d08dd72ab13263e045d54dfca2b.png",
+      "alt": "Empty state illustration of a neon green stylized piggy bank"
+    },
+    "ai_advisor_avatar": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/340da871-6bc1-4873-a505-81f75e310e50/images/eb51a2919d10a5731b0e6cb7e5f6b2c565781b49164fdee62a8fa0099358c1cb.png",
+      "alt": "AI Advisor glowing neon green brain avatar"
+    },
+    "abstract_hero_bg": {
+      "url": "https://images.pexels.com/photos/28494632/pexels-photo-28494632.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "alt": "Abstract neon geometric shapes"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Adhere strictly to the 'Dark-First Utility DARK' aesthetic. Use Bebas Neue for all major numeric headers and section titles to reinforce the structural hierarchy.",
+    "Do NOT use pure black (#000000). Use the provided #121214 surface color to reduce contrast fatigue, especially on screens with dense financial data.",
+    "Bebas Neue looks best in all-caps. Apply text-transform: uppercase where necessary for Bebas typography.",
+    "Implement a gradient-to-dark scrim pattern whenever text is placed on top of background imagery (like in the Onboarding flow or top Dashboard summary cards).",
+    "For the AI Advisor chat, differentiate the user and AI messages via subtle background tints (surfaceSecondary vs surfaceTertiary) and use the provided ai_advisor_avatar image.",
+    "Integrate Phosphor icons as the primary icon set. Use consistent weight (either all outlined or all filled, except for tab bars where outlined-inactive/filled-active is allowed).",
+    "Implement haptic feedback natively as mapped in the 'haptics' section. Haptics should be subtle to reinforce tactile feel."
+  ]
+}
