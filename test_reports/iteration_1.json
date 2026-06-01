@@ -1,0 +1,39 @@
+{
+  "summary": "Backend-only E2E pytest suite for Corn Club: 26/26 tests passed. Covered health, auth (register/login/me/duplicate/wrong-password/protected-routes), onboarding, balances, transactions CRUD, goals CRUD + projection (both no-savings and positive-savings paths), holdings (Alpha Vantage enrichment fields present), AI chat (Claude Haiku 4.5), AI chat history, AI suggest-investments (3 items with ticker/name/reason). No critical or minor backend issues found.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/auth/register", "issue": "Returns 200 instead of 201 on resource creation. Functional but not REST-idiomatic."},
+      {"endpoint": "/api/auth/login email validation", "issue": "Pydantic EmailStr rejects malformed emails with 422 (not 401). Behaviorally fine but worth knowing for client-side error mapping."},
+      {"endpoint": "global", "issue": "CORS is allow_origins=['*'] with allow_credentials=True - browsers ignore credentials with wildcard. Not a security issue for token-in-header auth but inconsistent."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [],
+    "react_native_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_corn_club_api.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "No backend fixes required. Frontend testing was explicitly skipped per request."
+  ],
+  "critical_code_review_comments": [
+    "server.py is 547 lines and approaching the 700-line split threshold; consider splitting into routers (auth, transactions, goals, holdings, ai) when feature work continues.",
+    "build_user_context indexes t['date'][:7] which assumes ISO format; safe today because we always write isoformat(), but a defensive parse would be more robust.",
+    "_price_cache is in-memory per-worker; with multiple uvicorn workers the Alpha Vantage 25/day quota will be hit faster. Acceptable for MVP."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_corn_club_api.py (new)",
+    "/app/test_reports/pytest/pytest_results.xml (new)"
+  ],
+  "success_rate": {"backend": "100% (26/26)", "frontend": "not tested (per request)"},
+  "seed_data_creation": "Each test run registers a fresh TEST_corn_<uuid>@corn.club user; all created transactions/goals/holdings are prefixed with TEST_ and most are deleted in their own test class. A small amount of TEST_ chat history and a couple of TEST_ transactions remain on the throwaway user (no cleanup needed since the user itself is throwaway).",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Use EXPO_PUBLIC_BACKEND_URL from /app/frontend/.env (not EXPO_BACKEND_URL). Test user test@corn.club/password123 exists but is NOT onboarded - use it only for login flow tests; create a fresh user (uuid email) for any state-modifying suite. Alpha Vantage rate limit is 25/day shared - tests assert presence of current_price field but tolerate null. AI tests hit real Claude Haiku 4.5 (Emergent key) so each run consumes quota; chat history will accumulate on the throwaway user.",
+  "rca_of_issue": "N/A - no failures."
+}
