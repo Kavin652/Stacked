@@ -3,7 +3,7 @@ import { storage } from "@/src/utils/storage";
 const BACKEND = process.env.EXPO_PUBLIC_BACKEND_URL;
 export const API_BASE = `${BACKEND}/api`;
 
-const TOKEN_KEY = "corn_club_token";
+const TOKEN_KEY = "stacked_token";
 
 export async function setToken(token: string | null) {
   if (token) await storage.secureSet(TOKEN_KEY, token);

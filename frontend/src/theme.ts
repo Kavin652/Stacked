@@ -1,4 +1,4 @@
-// Theme tokens for Corn Club
+// Theme tokens for Stacked
 export const colors = {
   surface: "#121214",
   surfaceSecondary: "#1C1C1F",

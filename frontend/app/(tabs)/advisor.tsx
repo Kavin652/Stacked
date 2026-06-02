@@ -78,7 +78,7 @@ export default function Advisor() {
               </View>
               <Text style={styles.emptyTitle}>HEY {user?.name?.toUpperCase()} 👋</Text>
               <Text style={styles.emptyText}>
-                I'm Corn, your AI money mentor. Ask me anything about your spending, savings, or investments.
+                I'm Stax, your AI money mentor. Ask me anything about your spending, savings, or investments.
               </Text>
               <View style={styles.suggestRow}>
                 {SUGGESTED.map(s => (
@@ -94,7 +94,7 @@ export default function Advisor() {
               {item.role === "assistant" && (
                 <View style={styles.aiTag}>
                   <Ionicons name="sparkles" size={10} color={colors.brand} />
-                  <Text style={styles.aiTagText}>CORN</Text>
+                  <Text style={styles.aiTagText}>STAX</Text>
                 </View>
               )}
               <Text style={[styles.bubbleText, item.role === "user" ? { color: colors.onSurface } : { color: colors.onSurfaceSecondary }]}>

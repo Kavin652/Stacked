@@ -1,7 +1,7 @@
-# Corn Club — Product Requirements Document (PRD)
+# Stacked — Product Requirements Document (PRD)
 
 ## Overview
-**Corn Club** is an AI-powered personal finance mobile app for teens & young adults.
+**Stacked** is an AI-powered personal finance mobile app for teens & young adults.
 Tech: React Native + Expo (frontend), FastAPI + MongoDB (backend), Claude Haiku 4.5 via Emergent LLM Key (AI), Alpha Vantage (live stock prices).
 
 ## Auth & Onboarding

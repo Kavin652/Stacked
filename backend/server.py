@@ -420,7 +420,7 @@ async def build_user_context(user: dict) -> str:
 async def ai_chat(body: ChatIn, user: dict = Depends(get_current_user)):
     context = await build_user_context(user)
     system_message = (
-        "You are Corn, a friendly, encouraging, and savvy AI financial advisor for teenagers and young adults. "
+        "You are Stax, a friendly, encouraging, and savvy AI financial advisor for teenagers and young adults. "
         "Speak casually but knowledgeably. Use emojis sparingly. Keep responses concise (2-4 short paragraphs max). "
         "Give practical, age-appropriate financial advice. Avoid jargon, or explain it when you must use it. "
         "Never recommend risky behavior. When discussing investments, always mention diversification and long-term thinking. "
@@ -528,7 +528,7 @@ async def stock_price(ticker: str, user: dict = Depends(get_current_user)):
 
 @api_router.get("/")
 async def root():
-    return {"message": "Corn Club API", "status": "ok"}
+    return {"message": "Stacked API", "status": "ok"}
 
 # ============================ APP ============================
 

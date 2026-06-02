@@ -78,7 +78,7 @@ export default function Goals() {
           <View style={styles.emptyCard}>
             <Text style={{ fontSize: 48 }}>🎯</Text>
             <Text style={styles.emptyTitle}>NO GOALS YET</Text>
-            <Text style={styles.emptyText}>Set your first savings goal and let Corn help you crush it.</Text>
+            <Text style={styles.emptyText}>Set your first savings goal and let Stax help you crush it.</Text>
             <TouchableOpacity style={styles.primaryBtn} onPress={() => { setEditing(null); setShowAdd(true); }}>
               <Text style={styles.primaryBtnText}>CREATE A GOAL</Text>
             </TouchableOpacity>

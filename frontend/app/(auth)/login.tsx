@@ -40,7 +40,7 @@ export default function Login() {
             <View style={styles.logoBadge}>
               <Ionicons name="leaf" size={32} color={colors.brand} />
             </View>
-            <Text style={styles.brand}>CORN CLUB</Text>
+            <Text style={styles.brand}>STACKED</Text>
             <Text style={styles.tagline}>Your money. Your moves.</Text>
           </View>
 
@@ -80,7 +80,7 @@ export default function Login() {
             <Link href="/(auth)/register" asChild>
               <TouchableOpacity testID="login-go-register" style={styles.linkBtn}>
                 <Text style={styles.linkText}>
-                  New to Corn Club? <Text style={styles.linkTextBold}>Sign up</Text>
+                  New to Stacked? <Text style={styles.linkTextBold}>Sign up</Text>
                 </Text>
               </TouchableOpacity>
             </Link>

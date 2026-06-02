@@ -38,7 +38,7 @@ export default function Register() {
         <ScrollView contentContainerStyle={styles.scroll} keyboardShouldPersistTaps="handled">
           <View style={styles.logoWrap}>
             <View style={styles.logoBadge}><Ionicons name="leaf" size={28} color={colors.brand} /></View>
-            <Text style={styles.brand}>CORN CLUB</Text>
+            <Text style={styles.brand}>STACKED</Text>
           </View>
 
           <View style={styles.form}>
